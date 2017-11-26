@@ -8,8 +8,8 @@ class ProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ('middle_name', 'birthday', 'sex', 'city', 'postcode', 'region', 'street',
-		'housing', 'structure', 'house', 'apartment', 'mobile_phone', 'home_phone', 'company', 'profession',
-		'position', 'insurance_policy', 'SNILS')
+		'housing', 'structure', 'house', 'apartment', 'mobile_phone', 'company', 'profession',
+		'position', 'insurance_policy', 'SNILS', 'passport')
 
 class UserForm(forms.ModelForm):
 	class Meta:

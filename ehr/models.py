@@ -41,15 +41,18 @@ RH_FACTOR_CHOICES = (
 )
 
 class City(  models.Model ):
-   city_id = models.IntegerField(default=0, blank=True)
-   city_name = models.CharField(max_length=40, default="", blank=True)
-   
-   def __unicode__(self):
+  city_id = models.IntegerField(default=0, blank=True)
+  city_name = models.CharField(max_length=40, default="", blank=True)
+
+  def __unicode__(self):
     return self.city_name
-   
-   class Meta:
-     verbose_name="город"
-     verbose_name_plural = "города"
+
+  def __str__(self):
+    return self.city_name
+
+  class Meta:
+    verbose_name="город"
+    verbose_name_plural = "города"
 
 
 class Metric(models.Model):
@@ -89,6 +92,8 @@ class Profile( models.Model ):
    apartment = models.CharField(max_length=50, default="", blank=True, verbose_name=u"Квартира" )
    mobile_phone = models.CharField(max_length=50, default="", blank=True, verbose_name=u"Мобильный телефон" )
    home_phone = models.CharField(max_length=50, default="", blank=True, verbose_name=u"Домашний телефон" )
+
+   passport = models.CharField(max_length=10, default="", blank=True, verbose_name=u"Паспорт" )
    
    user_type = models.IntegerField(default=0, choices=USER_TYPE_CHOICES, verbose_name=u"Тип пользователя" )
    
@@ -124,6 +129,11 @@ class Profile( models.Model ):
        field2 = mobile_phone[8:10]
        field3 = mobile_phone[10:]
        return "%s(%s)%s-%s-%s" % (country, operator, field1, field2, field3)
+
+   @property
+   def get_passport(self):
+       p = self.passport
+       return(p[0:2] + " " + p[2:4] + " " + p[4:])
    
    @property
    def get_heart_rate(self):

@@ -40,6 +40,9 @@ class LogoutView(View):
 		return HttpResponseRedirect("/ehr/login")
 
 def ProfileView(request):
+  return render(request, 'ehr/show_profile.html')
+
+def EditProfileView(request):
   if request.user.is_authenticated():
     if request.method == 'POST':
       user_form = forms.UserForm(request.POST, instance=request.user)
@@ -54,7 +57,7 @@ def ProfileView(request):
       user_form = forms.UserForm(instance=request.user)
       profile_form = forms.ProfileForm(instance=request.user.profile)
 
-    return render(request, 'ehr/profile.html', {
+    return render(request, 'ehr/edit_profile.html', {
       'user_form': user_form,
       'profile_form': profile_form,
       })

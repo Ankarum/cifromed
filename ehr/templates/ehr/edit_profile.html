@@ -29,15 +29,15 @@
       <div>
         <p>
           Мобильный телефон: {{profile_form.mobile_phone}}{{profile_form.mobile_phone.errors}}
-          Домашний телефон: {{profile_form.home_phone}}{{profile_form.home_phone.errors}}
+          email: {{ user_form.email }}{{ user_form.email.errors }}
         </p>
-        <p>email: {{ user_form.email }}{{ user_form.email.errors }}</p>
       </div>
 
       <div>
         <p>
           Страховой полис: {{profile_form.insurance_policy}}{{profile_form.insurance_policy.errors}}
           СНИЛС: {{profile_form.SNILS}}{{profile_form.SNILS.errors}}
+          Паспорт: {{profile_form.passport}}{{profile_form.passport.errors}}
         </p>
       </div>
 
