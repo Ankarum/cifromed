@@ -42,6 +42,9 @@ class LogoutView(View):
 def ProfileView(request):
   return render(request, 'ehr/show_profile.html')
 
+def MainView(request):
+  return render(request, 'base.html')
+
 def EditProfileView(request):
   if request.user.is_authenticated():
     if request.method == 'POST':

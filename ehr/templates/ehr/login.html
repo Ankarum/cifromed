@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Регистрация</title>
-  </head>
-  <body>
-    <form action="" method="post">
-      {% csrf_token %}
-      <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
-      {{ form.as_p }}
-      <button type="submit">Зарегистрироваться</button>
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Авторизация{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+{% load crispy_forms_tags %}
+<form action="" method="post">
+  {% csrf_token %}
+  <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+  {{ form|crispy }}
+  <button type="submit">Войти</button>
+</form>
+</div>
+{% endblock content %}

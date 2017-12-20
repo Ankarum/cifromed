@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<p>Вы вошли как {{ user.username }}</p>
+{% load crispy_forms_tags %}
+<form action="" method="post">
+  {% csrf_token %}
+
+  <div>
+    <p>Имя: {{ user_form.first_name }}
+    {{ user_form.first_name.errors }}
+
+    Фамилия: {{ user_form.last_name }}
+    {{ user_form.last_name.errors }}
+
+    Отчество: {{ profile_form.middle_name }}
+    {{ profile_form.middle_name.errors }}</p>
+
+    
+
+    <p>Дата рождения: {{profile_form.birthday}}{{profile_form.birthday.errors}}
+       Пол: {{profile_form.sex}}{{profile_form.sex.errors}}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      Мобильный телефон: {{profile_form.mobile_phone}}{{profile_form.mobile_phone.errors}}
+      email: {{ user_form.email }}{{ user_form.email.errors }}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      Страховой полис: {{profile_form.insurance_policy}}{{profile_form.insurance_policy.errors}}
+      СНИЛС: {{profile_form.SNILS}}{{profile_form.SNILS.errors}}
+      Паспорт: {{profile_form.passport}}{{profile_form.passport.errors}}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      Город: {{profile_form.city}}{{profile_form.city.errors}}
+      Почтовый индекс: {{profile_form.postcode}}{{profile_form.postcode.errors}}
+      Регион: {{profile_form.region}}{{profile_form.region.errors}}
+    </p>
+
+    <p>
+      Улица: {{profile_form.street}}{{profile_form.street.errors}}
+      Корпус: {{profile_form.housing}}{{profile_form.housing.errors}}
+      Строение: {{profile_form.structure}}{{profile_form.structure.errors}}
+    </p>
+
+    <p>
+      Дом: {{profile_form.house}}{{profile_form.house.errors}}
+      Квартира: {{profile_form.apartment}}{{profile_form.apartment.errors}}
+    </p>
+  </div>
+
+  <div>
+    <p>
+      Профессия: {{profile_form.profession}}{{profile_form.profession.errors}}
+      Должность: {{profile_form.position}}{{profile_form.position.errors}}
+    </p>
+  </div>
+
+  <button type="submit">Обновить данные</button>
+  <button><a href="/ehr/logout">Выйти</a></button>
+</form>
+{% endif %}
+{% endblock content %}
