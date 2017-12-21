@@ -28,6 +28,18 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# django-registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
+
+AUTH_USER_EMAIL_UNIQUE = True
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'info@google.ru'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,11 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ehr',
     'bootstrap3',
-    'crispy_forms',
-    'django_forms_bootstrap',
     'bootstrapform',
-    'bootstrap_datepicker',
     'jquery_ui',
+    'customuseradmin',
 ]
 
 BOOTSTRAP3 = {
@@ -180,6 +190,14 @@ LANGUAGE_CODE = 'ru-RU'
 
 # Пример вывода: 16 сентября 2012 
 DATE_FORMAT = 'd E Y'
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d', '%d/%m/%Y', '%d/%m/%y', # '2006-10-25', '10/25/2006', '10/25/06'
+    '%b %d %Y', '%b %d, %Y',            # 'Oct 25 2006', 'Oct 25, 2006'
+    '%d %b %Y', '%d %b, %Y',            # '25 Oct 2006', '25 Oct, 2006'
+    '%B %d %Y', '%B %d, %Y',            # 'October 25 2006', 'October 25, 2006'
+    '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
+]
 
 TIME_ZONE = 'UTC'
 

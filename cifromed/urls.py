@@ -20,5 +20,8 @@ from ehr import views
 urlpatterns = [
     url(r'^$', views.MainView),
     url(r'^admin/', admin.site.urls),
-    url(r'^ehr/', include('ehr.urls'))
+    url(r'^ehr/', include('ehr.urls')),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
+    url(r'^accounts/profile/', views.ProfileView),
+    url(r'^accounts/editprofile/', views.EditProfileView)
 ]

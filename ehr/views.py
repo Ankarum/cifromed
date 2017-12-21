@@ -8,37 +8,6 @@ from django.contrib.auth import login, logout
 
 from . import forms
 
-# Create your views here.
-class RegisterFormView(FormView):
-	form_class = UserCreationForm
-
-	success_url = "/ehr/login/"
-
-	template_name = "ehr/register.html"
-
-	def form_valid(self, form):
-		form.save()
-
-		return super(RegisterFormView, self).form_valid(form)
-
-class LoginFormView(FormView):
-	form_class = AuthenticationForm
-
-	template_name = "ehr/login.html"
-
-	success_url = "/ehr/profile/"
-
-	def form_valid(self, form):
-		self.user = form.get_user()
-
-		login(self.request, self.user)
-		return super(LoginFormView, self).form_valid(form)
-
-class LogoutView(View):
-	def get(self, request):
-		logout(request)
-		return HttpResponseRedirect("/ehr/login")
-
 def ProfileView(request):
   return render(request, 'ehr/show_profile.html')
 

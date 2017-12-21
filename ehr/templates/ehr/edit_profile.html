@@ -7,6 +7,7 @@
       changeMonth: true,
       changeYear: true,
       yearRange: "1900:",
+      dateFormat: 'dd.mm.yy',
       // You can put more options here.
 
     });
@@ -15,15 +16,52 @@
 {% endblock javascript_includes %}
 {% block content %}
 {% if user.is_authenticated %}
-<p>Вы вошли как {{ user.username }}</p>
 {% load bootstrap %}
 <form action="" method="post">
 
   {% csrf_token %}
-  {{profile_form|bootstrap}}
 
-  <button type="submit">Обновить данные</button>
-  <button><a href="/ehr/logout">Выйти</a></button>
+  <div class="row">
+    <div class="col-md-3">{{user_form.first_name|bootstrap}}{{user_form.first_name.errors}}</div>
+    <div class="col-md-3">{{user_form.last_name|bootstrap}}{{user_form.last_name.errors}}</div>
+    <div class="col-md-3">{{profile_form.middle_name|bootstrap}}{{profile_form.middle_name.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">{{user_form.email|bootstrap}}{{user_form.email.errors}}</div>
+    <div class="col-md-2">{{profile_form.mobile_phone|bootstrap}}{{profile_form.mobile_phone.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">{{profile_form.birthday|bootstrap}}{{profile_form.birthday.errors}}</div>
+    <div class="col-md-2">{{profile_form.sex|bootstrap}}{{profile_form.sex.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">{{profile_form.passport|bootstrap}}{{profile_form.passport.errors}}</div>
+    <div class="col-md-2">{{profile_form.SNILS|bootstrap}}{{profile_form.SNILS.errors}}</div>
+    <div class="col-md-2">{{profile_form.insurance_policy|bootstrap}}{{profile_form.insurance_policy.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">{{profile_form.postcode|bootstrap}}{{profile_form.postcode.errors}}</div>
+    <div class="col-md-2">{{profile_form.region|bootstrap}}{{profile_form.region.errors}}</div>
+    <div class="col-md-4">{{profile_form.street|bootstrap}}{{profile_form.street.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1">{{profile_form.structure|bootstrap}}{{profile_form.structure.errors}}</div>
+    <div class="col-md-1">{{profile_form.house|bootstrap}}{{profile_form.house.errors}}</div>
+    <div class="col-md-1">{{profile_form.apartment|bootstrap}}{{profile_form.apartment.errors}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">{{profile_form.company|bootstrap}}{{profile_form.company.errors}}</div>
+    <div class="col-md-2">{{profile_form.profession|bootstrap}}{{profile_form.profession.errors}}</div>
+    <div class="col-md-2">{{profile_form.position|bootstrap}}{{profile_form.position.errors}}</div>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Обновить данные</button>
 </form>
 {% endif %}
 {% endblock content %}

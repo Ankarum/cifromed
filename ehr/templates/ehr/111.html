@@ -1,8 +1,0 @@
-{% if user.is_authenticated %}
-	<h1>{{ user.profile.last_name }} {{user.profile.first_name}} {{user.profile.surname}}</h2>
-	<h2><u>Дата рождения:</u> {{ user.profile.birth_date }}</h2>
-	<h2><u>Email:</u> {{ user.profile.email }}</h2>
-	<h2><u>Телефон:</u> {{ user.profile.phone }}</h2>
-	<h2><u>Адрес:</u> {{ user.profile.location }}</h2>
-	<h2><u>Почтовый индекс:</u> {{ user.profile.index }}</h2>
-{% endif %}

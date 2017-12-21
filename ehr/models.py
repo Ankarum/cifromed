@@ -13,9 +13,14 @@ from django import forms
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from registration.signals import user_activated
+from django.contrib.auth import login
+
 #import core
 import datetime
 from datetime import date, timedelta
+
+
 
 USER_TYPE_CHOICES = (
     (0, 'Пользователь'),
@@ -336,3 +341,8 @@ try:
 except:
   pass
 
+@receiver(user_activated)
+def login_on_activation(sender, user, request, **kwargs):
+    """Logs in the user after activation"""
+    user.backend = 'django.contrib.auth.backends.ModelBackend'
+    login(request, user)
