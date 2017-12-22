@@ -4,24 +4,14 @@ from django.contrib.auth.models import User
 
 from .models import Profile
 
-from crispy_forms.helper import FormHelper
 
 from django.utils.translation import gettext_lazy as _
 
 from django.contrib.admin.widgets import AdminDateWidget 
 
-from bootstrap_datepicker.widgets import DatePicker
-
 class UserForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
     super(UserForm, self).__init__(*args, **kwargs)
-
-    self.helper = FormHelper(self)
-    self.helper.form_tag = False
-
-    self.helper.form_class = 'form-horizontal'
-    self.helper.label_class = 'col-lg-2'
-    self.helper.field_class = 'col-lg-8'
 
   class Meta:
     model = User
@@ -35,13 +25,6 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
   def __init__(self, *args, **kwargs):
     super(ProfileForm, self).__init__(*args, **kwargs)
-
-    self.helper = FormHelper(self)
-    self.helper.form_tag = False
-
-    self.helper.form_class = 'form-horizontal'
-    self.helper.label_class = 'col-lg-2'
-    self.helper.field_class = 'col-lg-8'
 
   class Meta:
     model = Profile
